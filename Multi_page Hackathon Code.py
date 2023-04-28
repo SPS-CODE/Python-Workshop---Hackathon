@@ -80,26 +80,18 @@ def W2():
     input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
 
     std_data = scaler.transform(input_data_reshaped)
-    prediction = classifier.predict(std_data)
+    decision = classifier.predict(std_data)
 
     if st.button(label='Press to show Results') == True:
-        st.write(prediction)
+        st.write(decision)
     
-    if (prediction [0]== 0):
+    if (decision [0]== 0):
         st.write('You are healthy!')
     else:
         st.write('You may have diabetes, consult a doctor!')
 
 def W1():
         heart_data = pd.read_csv('C:/Users/Abhishek Kumar Yadav/Downloads/heart.csv')
-
-        heart_data.head()
-        heart_data.tail()
-        heart_data.shape
-        heart_data.shape
-        heart_data.isnull().sum()
-        heart_data.describe
-        heart_data['target'].value_counts()
 
 
         X = heart_data.drop(columns='target', axis=1)
@@ -141,17 +133,15 @@ def W1():
 
 
         input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
+        prediction = model.predict(input_data_reshaped)
 
         if st.button(label='Click to show Results'):
-            
-            prediction = model.predict(input_data_reshaped)
             st.write (prediction)
         
         if (prediction [0]==0):
             st.write('You are healthy!')
         else:  
             st.write('You may have a heart disease, consult a Doctor!')
-
 
 st.header("Heart Disease and Diabetes Identifier")
 page = st.sidebar.selectbox('Select page',['W2','W1']) 
