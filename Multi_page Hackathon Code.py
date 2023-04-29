@@ -16,11 +16,13 @@ st.set_page_config(layout="wide")
 df = pd.DataFrame(px.data.gapminder())
 
 progress_bar = st.progress(0)
+    
 for i in range(100):
         progress_bar.progress(i+1)
         time.sleep(0.01)
 
-def W2():
+
+def Page_1():
 
 
     # loading the diabetes dataset to a pandas DataFrame
@@ -66,7 +68,7 @@ def W2():
     Pregnancies=st.number_input('Enter the Number of pregnancies', min_value=0., max_value=20., step=1.,format="%.2f")
     Glucose=st.number_input ('Enter the Plasma glucose concentration', min_value=60., max_value=200., value=115., step=1.,format="%.2f")
     BloodPressure=st.number_input ('Enter Diastolic blood pressure in mm Hg', min_value=40., max_value=140., value=90., step=1.,format="%.2f")
-    SkinThickness=st.number_input ('Enter Triceps skin fold thickness mm', min_value=1., max_value=35., value=15., step=1.,format="%.2f")
+    SkinThickness=st.number_input ('Enter Triceps skin fold thickness mm', min_value=0., max_value=35., value=15., step=1.,format="%.2f")
     Insulin=st.number_input ('Enter insulin level in mu U/ml', min_value=0., max_value=80., value=40., step=1.,format="%.2f")
     BMI=st.number_input ('Enter Body mass index weight in kg/height in m^2', min_value=15., max_value=180., value=90., step=1.,format="%.2f")
     DiabetesPedigreeFunction=st.number_input ('Enter Diabetes pedigree function', min_value=0., max_value=10., value=5., step=1.,format="%.2f")
@@ -90,7 +92,8 @@ def W2():
     else:
         st.write('You may have diabetes, consult a doctor!')
 
-def W1():
+def Page_2():
+        
         heart_data = pd.read_csv('C:/Users/Abhishek Kumar Yadav/Downloads/heart.csv')
 
 
@@ -136,7 +139,7 @@ def W1():
         prediction = model.predict(input_data_reshaped)
 
         if st.button(label='Click to show Results'):
-            st.write (prediction)
+           st.write (prediction)
         
         if (prediction [0]==0):
             st.write('You are healthy!')
@@ -144,8 +147,8 @@ def W1():
             st.write('You may have a heart disease, consult a Doctor!')
 
 st.header("Heart Disease and Diabetes Identifier")
-page = st.sidebar.selectbox('Select page',['W2','W1']) 
-if page == 'W2':
-     W2()
+page = st.sidebar.selectbox('Select page',['Page_1','Page_2']) 
+if page == 'Paage_1':
+     Page_1()
 else: 
-    W1()
+    Page_2()
