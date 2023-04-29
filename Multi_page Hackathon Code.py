@@ -148,7 +148,7 @@ def Page_2():
 
 st.header("Heart Disease and Diabetes Identifier")
 page = st.sidebar.selectbox('Select page',['Page_1','Page_2']) 
-if page == 'Paage_1':
+if page == 'Page_1':
      Page_1()
 else: 
     Page_2()
